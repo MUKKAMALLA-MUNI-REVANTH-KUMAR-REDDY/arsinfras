@@ -5,6 +5,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "@/hooks/use-toast";
 import HeroCarousel from "@/components/HeroCarousel";
 import StatsSection from "@/components/StatsSection"; 
@@ -40,6 +41,7 @@ const Index = () => {
   const [enquiryPhone, setEnquiryPhone] = useState("");
   const [enquiryEmail, setEnquiryEmail] = useState("");
   const [enquiryMessage, setEnquiryMessage] = useState("");
+  const [enquiryAgree, setEnquiryAgree] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
@@ -59,6 +61,11 @@ const Index = () => {
       return;
     }
 
+    if (!enquiryAgree) {
+      toast({ title: "Agreement required", description: "Please agree to the terms and conditions." });
+      return;
+    }
+
     setSubmitting(true);
 
     // Simulate API call — replace with real submission if/when available
@@ -71,6 +78,7 @@ const Index = () => {
       setEnquiryPhone("");
       setEnquiryEmail("");
       setEnquiryMessage("");
+      setEnquiryAgree(false);
       setPersonOpen(false);
     }, 800);
   }; 
@@ -107,6 +115,17 @@ const Index = () => {
             <Input placeholder="Phone *" value={enquiryPhone} onChange={(e) => setEnquiryPhone(e.target.value)} />
             <Input placeholder="Email (optional)" value={enquiryEmail} onChange={(e) => setEnquiryEmail(e.target.value)} />
             <Textarea placeholder="Message / Inquiry" value={enquiryMessage} onChange={(e) => setEnquiryMessage(e.target.value)} />
+
+            {/* terms checkbox */}
+            <label className="inline-flex items-center space-x-2">
+              <Checkbox
+                checked={enquiryAgree}
+                onCheckedChange={(checked) => setEnquiryAgree(!!checked)}
+              />
+              <span className="text-sm">
+                Accept all <a href="/privacy-policy" className="underline text-primary">terms&nbsp;and&nbsp;conditions</a> & I Would like to receive communication via SMS,Email and Whatsapp for my services,offers and updates.
+              </span>
+            </label>
           </div>
 
           <DialogFooter>

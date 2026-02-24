@@ -174,8 +174,9 @@ const Footer = ({ onSectionChange }: FooterProps) => {
               />
 
               <div className="flex items-start gap-2 text-sm text-gray-600">
-                <input type="checkbox" required />
-                <p>I agree to the Terms & Conditions</p>
+                <input type="checkbox" required className="mt-5" />
+                <p>Accept all <a href="/privacy-policy" className="underline text-primary">terms&nbsp;and&nbsp;conditions</a> & I Would like to receive communication via SMS,Email and Whatsapp for my services,offers and updates.
+</p>
               </div>
 
               <button
