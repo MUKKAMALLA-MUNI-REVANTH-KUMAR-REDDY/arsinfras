@@ -14,6 +14,9 @@ import ProjectsSection from "@/components/ProjectsSection";
 import AwardsSection from "@/components/AwardsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import emailjs from '@emailjs/browser';
+import WhatsAppChat from "@/components/WhatsAppChat";
+
 
 type Section = "home" | "about" | "projects" | "awards" | "contact";
 
@@ -73,7 +76,28 @@ const Index = () => {
       setSubmitting(false);
       toast({ title: "Enquiry submitted", description: "Thank you — we will contact you shortly." });
 
-      // reset form
+      // send through EmailJS using direct parameters instead of a form
+      emailjs
+        .send(
+          "service_ehfpojb","template_zy2pm0i",
+          {
+            from_name: enquiryName,
+            phone: enquiryPhone,
+            email: enquiryEmail,
+            message: enquiryMessage,
+          },
+          'mV0nRTPUTPmYm1wy9',
+        )
+        .then(
+          () => {
+            console.log('SUCCESS!');
+          },
+          (error) => {
+            console.log('FAILED...', error.text);
+          },
+        );
+
+      // reset form state
       setEnquiryName("");
       setEnquiryPhone("");
       setEnquiryEmail("");
@@ -81,7 +105,8 @@ const Index = () => {
       setEnquiryAgree(false);
       setPersonOpen(false);
     }, 800);
-  }; 
+  };
+
 
   const handleSectionChange = (section: string) => {
     setActiveSection(section as Section);
@@ -135,7 +160,7 @@ const Index = () => {
       </Dialog>
 
       {/* WhatsApp popup anchored to left side, icon-only */}
-      <Dialog open={whatsOpen} onOpenChange={setWhatsOpen}>
+      {/*<Dialog open={whatsOpen} onOpenChange={setWhatsOpen}>
         <DialogContent className="fixed top-[100px] right-[40px] w-max -translate-y-1/2">
           <div className="text-center">
             <a
@@ -151,7 +176,7 @@ const Index = () => {
             </a>
           </div>
         </DialogContent>
-      </Dialog>
+      </Dialog>*/}
 
 
 
@@ -161,7 +186,7 @@ const Index = () => {
           <AboutSection />
           <StatsSection />
           <ProjectsSection />
-
+          <WhatsAppChat />
           <ContactSection />
         </>
       )}
@@ -176,6 +201,7 @@ const Index = () => {
       {activeSection === "projects" && <ProjectsSection />}
       {activeSection === "awards" && <AwardsSection />}
       {activeSection === "contact" && <ContactSection />}
+      <WhatsAppChat />
       <Footer onSectionChange={handleSectionChange} />
     </div>
   );

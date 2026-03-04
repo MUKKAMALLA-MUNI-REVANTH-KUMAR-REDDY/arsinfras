@@ -1,8 +1,11 @@
-import { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import emailjs from '@emailjs/browser';
+import WhatsAppChat from "@/components/WhatsAppChat";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
+  const form = useRef<HTMLFormElement | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -10,10 +13,25 @@ const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Thank you! We will get back to you soon.");
-    setFormData({ name: "", email: "", phone: "", message: "" });
-  };
+    if (form.current) {
+      emailjs
+        .sendForm('service_ehfpojb', 'template_g1kuy8r', form.current, {
+          publicKey: 'mV0nRTPUTPmYm1wy9',
+        })
+        .then(
+          () => {
+            console.log('SUCCESS!');
+          },
+          (error) => {
+            console.log('FAILED...', error.text);
+          },
+        );
 
+      // reset form after submission (regardless of success/failure)
+      alert("Thank you! We will get back to you soon.");
+      setFormData({ name: "", email: "", phone: "", message: "" });
+    }
+  };
   // Google Maps: prefer VITE_GOOGLE_MAPS_API_KEY (Embed API). If not provided, use a generic
   // maps.google.com embed (works without API key) pointed at Sahakar Nagar coordinates.
   const googleMapsKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
@@ -89,7 +107,7 @@ const ContactSection = () => {
               <div>
                 <h4 className="font-body font-semibold text-foreground">Address</h4>
                 <p className="text-sm text-muted-foreground">
-                 #953, 2nd Floor, D-Block, 13th Cross, 16th Main, Sahakar Nagar, Bengaluru – 560092
+                 ARS INFRA DEVELOPERS PVT LTD,#953, 2nd Floor, D-Block, 13th Cross, 16th Main, Sahakar Nagar, Bengaluru – 560092
                 </p>
               </div>
             </div>
@@ -118,7 +136,7 @@ const ContactSection = () => {
           </div>
 
           {/* Contact Form */}
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <form ref={form} onSubmit={handleSubmit} className="flex flex-col gap-4">
             <input
               type="text"
               name="name"
@@ -164,6 +182,7 @@ const ContactSection = () => {
           </form>
         </div>
       </div>
+      <WhatsAppChat />
     </section>
   );
 };

@@ -1,3 +1,5 @@
+import WhatsAppChat from "@/components/WhatsAppChat";
+
 const AboutSection = () => {
   return (
     <section id="about" className="section-padding">
@@ -19,6 +21,7 @@ const AboutSection = () => {
           <li>Our Passion is real estate development.</li>
         </ol>      
       </div>
+      <WhatsAppChat />  
     </section>
   );
 };

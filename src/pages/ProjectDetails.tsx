@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FaStamp } from "react-icons/fa6";
 import { SiHdfcbank,SiIcicibank } from "react-icons/si";
+import WhatsAppChat from "@/components/WhatsAppChat";
 
 import {
   MapPin,
@@ -519,6 +520,7 @@ const ProjectDetails = () => {
           </ul>
         </div>
       </div>
+      <WhatsAppChat />
       
       <Footer />
     </div>
