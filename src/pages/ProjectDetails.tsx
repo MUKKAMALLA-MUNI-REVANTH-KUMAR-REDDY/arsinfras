@@ -36,8 +36,15 @@ import project23 from "@/assets/project-2-3.jpeg";
 import project24 from "@/assets/project-2-4.jpeg";
 import project25 from "@/assets/project-2-5.jpeg";
 import project26 from "@/assets/project-2-6.jpeg";
+import project31 from "@/assets/sumadhura 1.jpeg";
+import project32 from "@/assets/sumadhura 2.jpeg";
+import project33 from "@/assets/sumadhura 3.jpeg";
+import project34 from "@/assets/sumadhura 4.jpg";
+import project35 from "@/assets/sumadhura 5.jpg";
+import project36 from "@/assets/sumadhura 6.jpg";
 import spandanaBrochure from "@/assets/spandana-brochure.pdf";
 import vibrantBrouchure from "@/assets/vibrant-brochure.pdf";
+import sumadhuraBrochure from "@/assets/sumadhura broucher updated.pdf";
 
 const projectsData = [
 {
@@ -202,6 +209,121 @@ const projectsData = [
     "Near Kempegowda International Airport, Devanahalli, Bengaluru",
 
   coordinates: { lat: 13.232166, lng: 77.702164 },
+},
+{
+  id: 3,
+  name: "SUMADHURA PANORAMA - PHASE 2",
+  location: "Devanahalli Main Road - Near Kempegowda International Airport, Bengaluru",
+  type: "Premium Themed Plotted Development",
+  status: "EOI Stage Live – Priority Access Available",
+  description:
+    "SUMADHURA PANORAMA Phase 2 is a landmark 120+ acre themed plotted development inspired by the rich cultural heritage of South India. Located in North Bengaluru's fastest-growing investment hub, just 10 minutes from Kempegowda International Airport, this development offers unmatched design flexibility and premium living.",
+
+  price: "Starting from basic Price per sqft ₹8599/-",
+  priceNegotiable: false,
+  priceNegotiableNote: "",
+  brochure: sumadhuraBrochure,
+
+  gallery: [project31, project32, project33, project34, project35, project36],
+  units: [
+    {
+      type: "Plot",
+      size: "1200 sqft",
+      pricePerSqft: "₹8599",
+    },
+    {
+      type: "Plot",
+      size: "1500 sqft",
+      pricePerSqft: "₹8599",
+    },
+    {
+      type: "Plot",
+      size: "1800 sqft",
+      pricePerSqft: "₹8599",
+    },
+    {
+      type: "Plot",
+      size: "2400 sqft",
+      pricePerSqft: "₹8599",
+    },
+    {
+      type: "Plot",
+      size: "3000+ sqft",
+      pricePerSqft: "₹8599",
+    },
+  ],
+
+  amenities: [
+    "Club Sumadhura – Grand Clubhouse (45,000 Sq. Ft.)",
+    "Fully Equipped Gymnasium",
+    "Indoor Badminton Court",
+    "Indoor Games Room (Pool, Table Tennis, Board Games)",
+    "Co-Working Space",
+    "Multipurpose Party Hall with Service Kitchen",
+    "Yoga & Dance Studio",
+    "Steam, Sauna, Spa & Salon",
+    "Mini Theater / Recreation Rooms",
+    "Convenience Supermarket & Retail Spaces",
+    "Guest Rooms for Visitors",
+    "Grand Swimming Pool (Adults)",
+    "Shallow & Kids Pool with Poolside Deck",
+    "Outdoor Showers & Changing Rooms",
+    "Mini Soccer Ground",
+    "Tennis, Basketball & Pickleball Courts",
+    "Box Cricket Layout",
+    "Skate Park",
+    "Dedicated Jogging & Walking Tracks",
+    "Independent Bicycle Lanes",
+    "Children's Play Area & Trampoline Park",
+    "Open-Air Amphitheatre & Stepped Seating",
+    "Heritage-inspired Kulam (pond) and Themed Courtyards",
+    "Aroma Therapeutic Garden & Native Tree Plantations",
+    "Reflexology Pathways, Meditation Pavilions & Social Corners",
+    "70+ Lifestyle Amenities",
+  ],
+
+  facilities: [
+    "18m, 12m & 9m asphalted internal roads with paver sidewalks",
+    "Underground domestic water supply network with sump & WTP",
+    "Integrated underground drainage system and on-site STP",
+    "Underground power, data & voice cabling (no overhead wires)",
+    "100% DG backup for all common lifestyle facilities and layout utilities",
+    "Underground rainwater harvesting and automated irrigation network",
+    "Organic waste converter & waste-management systems",
+    "24/7 manned security, grand entrance plaza and automated boom barriers",
+    "Continuous perimeter CCTV surveillance",
+    "Energy-efficient LED streetlights with timer controls",
+    "Convenience retail and essential services on-site",
+  ],
+
+  banks: [
+    { name: "HDFC Bank", rate: "As per bank norms", maxLoan: "Up to 80%" },
+    { name: "Union Bank of India", rate: "As per bank norms", maxLoan: "Up to 80%" },
+    { name: "State Bank of India", rate: "As per bank norms", maxLoan: "Up to 80%" },
+    { name: "LIC Housing Finance", rate: "As per bank norms", maxLoan: "Up to 80%" },
+  ],
+
+  agents: [
+    {
+      id: 1,
+      name: "PETA NAGENDRA",
+      designation: "Listing Agent",
+      phone: "+91 9885953399",
+      email: "arsinfra84@gmail.com",
+      experience: "Real Estate Consultant",
+    },
+  ],
+
+  financialInfo: {
+    pricePerSqft: "₹8599 per sqft",
+    additionalCosts:
+      "Stamp duty and registration charges are extra as per government norms.",
+  },
+
+  mapLocation:
+    "Sumadhura Panorama experience centre, Devanahalli Main Road, Bengaluru",
+
+  coordinates: { lat: 13.2400332, lng: 77.6956355 },
 }
 
 ]
@@ -259,9 +381,14 @@ const ProjectDetails = () => {
   const mapSrc = googleMapsKey
     ? `https://www.google.com/maps/embed/v1/place?key=${googleMapsKey}&q=${encodeURIComponent(project.mapLocation)}`
     : googleFallbackSrc;
-  const mapLink = googleMapsKey
+  let mapLink = googleMapsKey
     ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(project.mapLocation)}`
     : `https://maps.google.com/?q=${lat},${lng}`;
+
+  // Use the exact Google Maps place URL for Sumadhura Panorama project (id 3)
+  if (project?.id === 3) {
+    mapLink = "https://www.google.co.in/maps/place/Sumadhura+Panorama+experience+centre/@13.2400332,77.6956355,16.36z/data=!4m6!3m5!1s0x3bae1d001aec811d:0x23745d2a30e6bd91!8m2!3d13.2375724!4d77.6942758!16s%2Fg%2F11mt7xwg7f?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D";
+  }
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % project.gallery.length);
@@ -295,7 +422,7 @@ const ProjectDetails = () => {
             <img
               src={project.gallery[currentImageIndex]}
               alt={`${project.name} - Image ${currentImageIndex + 1}`}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain bg-black"
             />
             <button
               onClick={prevImage}
@@ -385,24 +512,28 @@ const ProjectDetails = () => {
           <th className="px-6 py-3 text-sm font-semibold text-foreground border-b">
             Size (sqft)
           </th>
-          <th className="px-6 py-3 text-sm font-semibold text-foreground border-b">
-            Price
-          </th>
+          {project.units?.some((u) => u.price) && (
+            <th className="px-6 py-3 text-sm font-semibold text-foreground border-b">
+              Price
+            </th>
+          )}
         </tr>
       </thead>
 
       <tbody>
         {project.units?.map((unit, index) => (
           <tr key={index} className="hover:bg-muted/50 transition-colors">
-            <td className="px-6 py-4 border-b font-medium text-foreground">
+            <td className="px-6 py-2 border-b font-medium text-foreground">
               {unit.type}
             </td>
-            <td className="px-6 py-4 border-b text-muted-foreground">
+            <td className="px-6 py-2 border-b text-muted-foreground">
               {unit.size}
             </td>
-            <td className="px-6 py-4 border-b font-semibold text-accent">
-              {unit.price}
-            </td>
+            {project.units?.some((u) => u.price) && (
+              <td className="px-6 py-2 border-b font-semibold text-accent">
+                {unit.price}
+              </td>
+            )}
           </tr>
         ))}
       </tbody>
@@ -412,84 +543,175 @@ const ProjectDetails = () => {
       {/* Main Content */}
       <div className="section-padding">
         <div className="container mx-auto">
-          <div className="grid gap-12 lg:grid-cols-3">
-            {/* Left Column */}
-            <div className="lg:col-span-2">
-              {/* Amenities */}
-              <section className="mb-12">
-                <h2 className="mb-6 flex items-center gap-3 font-display text-2xl font-bold text-foreground">
-                  <Zap size={24} className="text-accent" />
-                  Amenities & Features
-                </h2>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {project.amenities.map((amenity, idx) => (
-                    <div key={idx} className="flex items-center gap-3 rounded-lg bg-card p-4">
-                      <div className="rounded-full bg-accent/10 p-2">
-                        <Zap size={18} className="text-accent" />
-                      </div>
-                      <p className="text-foreground">{amenity}</p>
-                    </div>
-                  ))}
+          {/* Amenities */}
+          <section className="mb-12">
+            <h2 className="mb-6 flex items-center gap-3 font-display text-2xl font-bold text-foreground">
+              <Zap size={24} className="text-accent" />
+              Amenities & Features
+            </h2>
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+              {(project.amenities || []).map((amenity, idx) => (
+                <div key={idx} className="flex items-start gap-3 rounded-lg bg-card p-4">
+                  <div className="mt-0.5 shrink-0 rounded-full bg-accent/10 p-2">
+                    <Zap size={18} className="text-accent" />
+                  </div>
+                  <p className="min-w-0 break-words text-sm text-foreground">{amenity}</p>
                 </div>
-              </section>
+              ))}
+              {/* Extra info cards */}
+              <div className="flex items-start gap-3 rounded-lg bg-card p-4">
+                <div className="mt-0.5 shrink-0 rounded-full bg-accent/10 p-2">
+                  <SiHdfcbank size={18} className="text-accent" />
+                </div>
+                <p className="min-w-0 break-words text-sm text-foreground">Bank loans available</p>
+              </div>
+              <div className="flex items-start gap-3 rounded-lg bg-card p-4">
+                <div className="mt-0.5 shrink-0 rounded-full bg-accent/10 p-2">
+                  <FaStamp size={18} className="text-accent" />
+                </div>
+                <p className="min-w-0 break-words text-sm text-foreground">Extra stamp duty &amp; GST applicable</p>
+              </div>
+            </div>
+          </section>
 
-              {/* Facilities */}
-              <section className="mb-12">
-                <h2 className="mb-6 flex items-center gap-3 font-display text-2xl font-bold text-foreground">
-                  <Trees size={24} className="text-accent" />
-                  Facilities
-                </h2>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {project.facilities.map((facility, idx) => (
-                    <div key={idx} className="flex items-center gap-3 rounded-lg bg-card p-4">
-                      <div className="rounded-full bg-accent/10 p-2">
-                        <Shield size={18} className="text-accent" />
-                      </div>
-                      <p className="text-foreground">{facility}</p>
-                    </div>
-                  ))}
+          {/* Facilities */}
+          <section className="mb-12">
+            <h2 className="mb-6 flex items-center gap-3 font-display text-2xl font-bold text-foreground">
+              <Trees size={24} className="text-accent" />
+              Facilities
+            </h2>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {project.facilities.map((facility, idx) => (
+                <div key={idx} className="flex items-center gap-3 rounded-lg bg-card p-4">
+                  <div className="rounded-full bg-accent/10 p-2">
+                    <Shield size={18} className="text-accent" />
+                  </div>
+                  <p className="text-foreground">{facility}</p>
                 </div>
-              </section>
+              ))}
+            </div>
+          </section>
 
-              {/* Map Location */}
-              <section className="mb-12">
-                <h2 className="mb-6 flex items-center gap-3 font-display text-2xl font-bold text-foreground">
-                  <Navigation size={24} className="text-accent" />
-                  Location Map
-                </h2>
-                <div className="rounded-lg bg-muted p-4 h-96">
-                  <iframe
-                    width="100%"
-                    height="100%"
-                    frameBorder="0"
-                    src={mapSrc}
-                    allowFullScreen
-                    loading="lazy"
-                    className="rounded-lg"
-                  ></iframe>
-                </div>
-
-                <div className="mt-3 flex items-start gap-4">
-                  <a
-                    href={mapLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-muted-foreground hover:text-accent"
-                  >
-                    View on {googleMapsKey ? "Google Maps" : "Google Maps"}
-                  </a>
-                  <p className="mt-1 text-sm text-muted-foreground">{project.mapLocation}</p>
-                </div>
-              </section>
+          {/* Map Location */}
+          <section className="mb-12">
+            <h2 className="mb-6 flex items-center gap-3 font-display text-2xl font-bold text-foreground">
+              <Navigation size={24} className="text-accent" />
+              Location Map
+            </h2>
+            <div className="rounded-lg bg-muted p-4 h-96">
+              <iframe
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                src={mapSrc}
+                allowFullScreen
+                loading="lazy"
+                className="rounded-lg"
+              ></iframe>
             </div>
 
-            {/* Right Column */}
-            <div className="space-y-6">
-              <p className="flex items-center gap-3 rounded-lg bg-card p-4 mt-14"><SiHdfcbank className="text-accent" /> Bank loans available</p>
-              <p className="flex items-center gap-3 rounded-lg bg-card p-4"><FaStamp className="text-accent" /> Extra stamp duty & GST applicable</p>
+            <div className="mt-3 flex items-start gap-4">
+              <a
+                href={mapLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-muted-foreground hover:text-accent"
+              >
+                View on {googleMapsKey ? "Google Maps" : "Google Maps"}
+              </a>
+              <p className="mt-1 text-sm text-muted-foreground">{project.mapLocation}</p>
             </div>
+          </section>
             
-          </div>
+          {/* Panorama Phase 2 — full-width boxed features (project 3) */}
+          {project.id === 3 && (
+            <section className="mt-12">
+              <h2 className="mb-6 font-display text-2xl font-bold text-foreground">Why Choose Panorama Phase 2</h2>
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {/* Distinct Theme */}
+                <div className="rounded-lg border border-muted bg-card p-6 flex flex-col gap-3">
+                  <h3 className="font-semibold">🏛️ Distinct South India Theme</h3>
+                  <p className="text-sm">A unique concept reflecting regional architecture.</p>
+                  <div className="flex items-center gap-3 rounded-lg bg-foreground/5 p-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent"><Zap size={16} /></div>
+                    <div className="text-sm">Phase 1 – Karnataka & Kerala</div>
+                  </div>
+                  <div className="flex items-center gap-3 rounded-lg bg-foreground/5 p-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent"><Zap size={16} /></div>
+                    <div className="text-sm">Phase 2 – Tamil Nadu, Andhra Pradesh & Telangana</div>
+                  </div>
+                </div>
+
+                {/* Location & Investment */}
+                <div className="rounded-lg border border-muted bg-card p-6 flex flex-col gap-3">
+                  <h3 className="font-semibold">📍 Prime Location & Investment</h3>
+                  <div className="flex items-center gap-3 rounded-lg bg-foreground/5 p-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent"><Zap size={16} /></div>
+                    <div className="text-sm">Located in North Bengaluru's high-growth corridor</div>
+                  </div>
+                  <div className="flex items-center gap-3 rounded-lg bg-foreground/5 p-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent"><Zap size={16} /></div>
+                    <div className="text-sm">Minutes from Kempegowda International Airport</div>
+                  </div>
+                  <div className="flex items-center gap-3 rounded-lg bg-foreground/5 p-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent"><Zap size={16} /></div>
+                    <div className="text-sm">Close to upcoming tech parks & infrastructure</div>
+                  </div>
+                  <div className="flex items-center gap-3 rounded-lg bg-foreground/5 p-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent"><Zap size={16} /></div>
+                    <div className="text-sm">Strong appreciation potential</div>
+                  </div>
+                </div>
+
+                {/* Lifestyle & Amenities */}
+                <div className="rounded-lg border border-muted bg-card p-6 flex flex-col gap-3">
+                  <h3 className="font-semibold">🏡 Lifestyle & Amenities</h3>
+                  <div className="flex items-center gap-3 rounded-lg bg-foreground/5 p-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent"><Zap size={16} /></div>
+                    <div className="text-sm">Club Sumadhura – Grand Clubhouse (45,000 Sq. Ft.)</div>
+                  </div>
+                  <div className="flex items-center gap-3 rounded-lg bg-foreground/5 p-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent"><Zap size={16} /></div>
+                    <div className="text-sm">Grand Swimming Pool, Kids Pool & Poolside Deck</div>
+                  </div>
+                  <div className="flex items-center gap-3 rounded-lg bg-foreground/5 p-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent"><Zap size={16} /></div>
+                    <div className="text-sm">Sports Courts: Tennis, Basketball, Pickleball & more</div>
+                  </div>
+                  <div className="flex items-center gap-3 rounded-lg bg-foreground/5 p-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent"><Zap size={16} /></div>
+                    <div className="text-sm">Heritage-inspired landscaping: Kulam, Pavilions & Courtyards</div>
+                  </div>
+                </div>
+
+                {/* Core Infrastructure & Facilities */}
+                <div className="rounded-lg border border-muted bg-card p-6 flex flex-col gap-3">
+                  <h3 className="font-semibold">🛠️ Core Infrastructure & Facilities</h3>
+                  <ul className="list-disc pl-5 text-sm space-y-2">
+                    <li>18m, 12m & 9m asphalted internal roads with paver sidewalks</li>
+                    <li>Underground water supply network, sump & WTP</li>
+                    <li>Integrated underground drainage and on-site STP</li>
+                    <li>Underground power/data cabling, 100% DG backup for facilities</li>
+                    <li>Rainwater harvesting, organic waste converter & automated irrigation</li>
+                    <li>24/7 manned security, grand entrance plaza & CCTV surveillance</li>
+                  </ul>
+                </div>
+
+                {/* Plot Sizes & Ideal Buyers */}
+                <div className="rounded-lg border border-muted bg-card p-6 flex flex-col gap-3">
+                  <h3 className="font-semibold">📏 Plot Sizes & Ideal Buyers</h3>
+                  <p className="text-sm">Available plot sizes:</p>
+                  <p className="text-sm font-medium">1200 | 1500 | 1800 | 2400 | 3000+ sq.ft.</p>
+                  <h4 className="font-semibold">Perfect For</h4>
+                  <ul className="list-disc pl-5 text-sm space-y-1">
+                    <li>End Users – Build your dream villa</li>
+                    <li>Investors – High appreciation potential</li>
+                    <li>NRI Buyers – Excellent airport connectivity</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          )}
         </div>
       </div>
 

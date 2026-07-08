@@ -2,6 +2,7 @@ import { MapPin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import project11 from "@/assets/project-1-1.jpeg";
 import project21 from "@/assets/project-2-1.jpeg";
+import sumadhura1 from "@/assets/sumadhura 1.jpeg";
 
 const projects = [
   {
@@ -18,6 +19,14 @@ const projects = [
     name: "VIBRANT SATHYAVAN",
     location: "Devanahalli, Bangalore",
     type: "Premium Villas",
+    status: "Ongoing",
+  },
+  {
+    id: 3,
+    image: sumadhura1,
+    name: "SUMADHURA PANORAMA",
+    location: "Devanahalli Main Road - Near Kempegowda International Airport",
+    type: "Premium Plotted Development",
     status: "Ongoing",
   },
 ];
