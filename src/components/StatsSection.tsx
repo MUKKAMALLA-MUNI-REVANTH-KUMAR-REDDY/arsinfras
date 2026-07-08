@@ -4,7 +4,7 @@ import { Building2, User, Home, Ruler } from "lucide-react";
 const stats = [
   { icon: User, value: 800, suffix: "+", label: "Customers" },
   { icon: Building2, value: 12, suffix: "+", label: "Completed Projects" },
-  { icon: Home, value: 2, suffix: "+", label: "Ongoing Projects" },
+  { icon: Home, value: 3, suffix: "+", label: "Ongoing Projects" },
   { icon: Ruler, value: 40, suffix: "+ Acres", label: "Area Developed" },
 ];
 

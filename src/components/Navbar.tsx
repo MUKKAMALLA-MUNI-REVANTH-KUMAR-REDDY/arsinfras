@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 const projectsList = [
   { id: 1, name: "SPANDANA GARDENIA" },
   { id: 2, name: "VIBRANT SATHYAVAN" },
+  { id: 3, name: "SUMADHURA PANORAMA" },
 ];
 
 type NavbarProps = {
