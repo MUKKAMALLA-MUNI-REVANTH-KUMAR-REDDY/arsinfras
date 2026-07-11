@@ -7,6 +7,7 @@ import sumadhura1 from "@/assets/sumadhura 1.jpeg";
 const projects = [
   {
     id: 1,
+    slug: "spandana-gardenia",
     image: project11,
     name: "SPANDANA GARDENIA",
     location: "Near Kempegowda International Airport, Devanahalli,Bengalore",
@@ -15,6 +16,7 @@ const projects = [
   },
   {
     id: 2,
+    slug: "vibrant-sathyavan",
     image: project21,
     name: "VIBRANT SATHYAVAN",
     location: "Devanahalli, Bangalore",
@@ -23,6 +25,7 @@ const projects = [
   },
   {
     id: 3,
+    slug: "sumadhura-panorama-phase-2",
     image: sumadhura1,
     name: "SUMADHURA PANORAMA",
     location: "Devanahalli Main Road - Near Kempegowda International Airport",
@@ -34,8 +37,8 @@ const projects = [
 const ProjectsSection = () => {
   const navigate = useNavigate();
 
-  const handleProjectClick = (projectId: number) => {
-    navigate(`/project/${projectId}`);
+  const handleProjectClick = (slug: string) => {
+    navigate(`/project/${slug}`);
   };
   return (
     <section id="projects" className="section-padding section-alt">
@@ -54,7 +57,7 @@ const ProjectsSection = () => {
           {projects.map((project) => (
             <button
               key={project.name}
-              onClick={() => handleProjectClick(project.id)}
+              onClick={() => handleProjectClick(project.slug)}
               className="group overflow-hidden rounded-lg bg-card shadow-md transition-shadow hover:shadow-xl text-left"
             >
               <div className="relative overflow-hidden">

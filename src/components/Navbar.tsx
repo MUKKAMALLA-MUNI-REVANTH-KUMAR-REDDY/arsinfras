@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const projectsList = [
-  { id: 1, name: "SPANDANA GARDENIA" },
-  { id: 2, name: "VIBRANT SATHYAVAN" },
-  { id: 3, name: "SUMADHURA PANORAMA" },
+  { id: 1, slug: "spandana-gardenia", name: "SPANDANA GARDENIA" },
+  { id: 2, slug: "vibrant-sathyavan", name: "VIBRANT SATHYAVAN" },
+  { id: 3, slug: "sumadhura-panorama-phase-2", name: "SUMADHURA PANORAMA" },
 ];
 
 type NavbarProps = {
@@ -15,9 +15,9 @@ const Navbar = ({ onSectionChange }: NavbarProps) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
 
-  const handleProjectClick = (id: number) => {
+  const handleProjectClick = (slug: string) => {
     setShowDropdown(false);
-    navigate(`/project/${id}`);
+    navigate(`/project/${slug}`);
   };
 
   return (
@@ -71,11 +71,11 @@ const Navbar = ({ onSectionChange }: NavbarProps) => {
             Projects
 
             {showDropdown && (
-              <div className="absolute left-0 top-8 w-60 bg-white shadow-lg rounded-md border z-50">
+              <div className="absolute left-1/2 -translate-x-1/2 top-8 w-max min-w-[16rem] bg-white shadow-lg rounded-md border z-50">
                 {projectsList.map((project) => (
                   <div
                     key={project.id}
-                    onClick={() => handleProjectClick(project.id)}
+                    onClick={() => handleProjectClick(project.slug)}
                     className="px-4 py-3 hover:bg-accent hover:text-white transition-colors cursor-pointer"
                   >
                     {project.name}

@@ -49,6 +49,7 @@ import sumadhuraBrochure from "@/assets/sumadhura broucher updated.pdf";
 const projectsData = [
 {
   id: 1,
+  slug: "spandana-gardenia",
   name: "SPANDANA GARDENIA",
   location: "Near Kempegowda International Airport, Devanahalli",
   type: "Premium Plotted Development",
@@ -129,6 +130,7 @@ const projectsData = [
 },
 {
   id: 2,
+  slug: "vibrant-sathyavan",
   name: "VIBRANT SATHYAVAN",
   location: "Devanahalli,Bengalure",
   type: "Premium Villas",
@@ -212,6 +214,7 @@ const projectsData = [
 },
 {
   id: 3,
+  slug: "sumadhura-panorama-phase-2",
   name: "SUMADHURA PANORAMA - PHASE 2",
   location: "Devanahalli Main Road - Near Kempegowda International Airport, Bengaluru",
   type: "Premium Themed Plotted Development",
@@ -345,11 +348,11 @@ const companyInfo = {
 };
 
 const ProjectDetails = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const navigate = useNavigate();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const project = projectsData.find((p) => p.id === parseInt(id || "1"));
+  const project = projectsData.find((p) => p.slug === slug);
 
   if (!project) {
     return (
