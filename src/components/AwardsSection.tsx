@@ -10,21 +10,22 @@ const AwardsSection = () => {
   return (
     <section id="awards" className="section-padding">
       <div className="container mx-auto">
-        <div className="mb-12 text-center">
-          <h2 className="mb-2 font-display text-3xl font-bold text-foreground md:text-4xl">
+        <div className="mb-8 text-center sm:mb-12">
+          <h2 className="mb-2 font-display text-2xl font-bold text-foreground sm:text-3xl md:text-4xl">
             Awards & <span className="gold-text">Recognition</span>
           </h2>
-          <div className="mx-auto mb-4 h-1 w-16 rounded-full bg-accent" />
+          <div className="mx-auto mb-4 h-1 w-12 rounded-full bg-accent sm:w-16" />
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {/* 1 col on xs, 2 on sm, 3 on lg */}
+        <div className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {awards.map((award) => (
             <div
               key={award.title}
-              className="flex flex-col items-center rounded-lg border bg-card p-8 text-center transition-shadow hover:shadow-lg"
+              className="flex flex-col items-center rounded-lg border bg-card p-6 text-center transition-shadow hover:shadow-lg sm:p-8"
             >
-              <award.icon className="mb-4 text-accent" size={40} />
-              <h3 className="mb-1 font-display text-lg font-semibold text-foreground">
+              <award.icon className="mb-3 text-accent sm:mb-4" size={36} />
+              <h3 className="mb-1 font-display text-base font-semibold text-foreground sm:text-lg">
                 {award.title}
               </h3>
               <p className="text-sm text-muted-foreground">{award.org}</p>

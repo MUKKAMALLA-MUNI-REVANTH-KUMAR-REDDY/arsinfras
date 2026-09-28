@@ -19,7 +19,6 @@ const slides = [
 const HeroCarousel = () => {
   const [current, setCurrent] = useState(0);
 
-  // Auto-advance every 5 seconds
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
@@ -32,7 +31,11 @@ const HeroCarousel = () => {
   const next = () => setCurrent((c) => (c + 1) % slides.length);
 
   return (
-    <section id="home" className="relative h-screen w-full overflow-hidden">
+    <section
+      id="home"
+      className="relative w-full overflow-hidden"
+      style={{ height: "calc(100svh - 3.25rem)", minHeight: "26rem" }}
+    >
       {/* Slides */}
       {slides.map((slide, i) => (
         <div
@@ -50,48 +53,60 @@ const HeroCarousel = () => {
         </div>
       ))}
 
-      {/* Content */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center">
-        <h1 className="text-2xl font-bold text-primary-foreground">ARS INFRA DEVELOPERS PVT LTD</h1>
-        <h1 className="mb-4 max-w-3xl font-display text-4xl font-bold text-primary-foreground md:text-6xl animate-fade-up">
+      {/* Content — centred, all text wraps */}
+      <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center sm:px-10">
+        {/* Company name — wraps on very small screens */}
+        <p className="mb-2 w-full text-[0.6rem] font-bold uppercase tracking-widest text-white/90 sm:text-xs md:text-sm">
+          ARS INFRA DEVELOPERS PVT LTD
+        </p>
+
+        {/* Title */}
+        <h2 className="mb-3 w-full font-display text-2xl font-bold leading-tight text-white sm:text-3xl md:text-5xl lg:text-6xl animate-fade-up">
           {slides[current].title}
-        </h1>
-        <p className="mb-8 max-w-xl text-lg text-primary-foreground/80 animate-fade-up" style={{ animationDelay: "0.2s" }}>
+        </h2>
+
+        {/* Subtitle */}
+        <p
+          className="mb-6 w-full text-sm leading-relaxed text-white/80 sm:text-base md:text-lg animate-fade-up"
+          style={{ animationDelay: "0.2s" }}
+        >
           {slides[current].subtitle}
         </p>
+
+        {/* CTA */}
         <a
           href="#projects"
-          className="rounded-md bg-accent px-8 py-3 font-body font-semibold text-accent-foreground transition-opacity hover:opacity-90 animate-fade-up"
+          className="rounded-md bg-accent px-6 py-2.5 text-sm font-semibold text-accent-foreground transition-opacity hover:opacity-90 sm:px-8 sm:py-3 sm:text-base animate-fade-up"
           style={{ animationDelay: "0.4s" }}
         >
           Explore Projects
         </a>
       </div>
 
-      {/* Navigation Arrows */}
+      {/* Arrows */}
       <button
         onClick={prev}
-        className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-card/30 p-2 text-primary-foreground backdrop-blur-sm transition hover:bg-card/50"
+        className="absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/20 p-1.5 text-white backdrop-blur-sm transition hover:bg-white/40 sm:left-4 sm:p-2"
         aria-label="Previous slide"
       >
-        <ChevronLeft size={24} />
+        <ChevronLeft size={18} />
       </button>
       <button
         onClick={next}
-        className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-card/30 p-2 text-primary-foreground backdrop-blur-sm transition hover:bg-card/50"
+        className="absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/20 p-1.5 text-white backdrop-blur-sm transition hover:bg-white/40 sm:right-4 sm:p-2"
         aria-label="Next slide"
       >
-        <ChevronRight size={24} />
+        <ChevronRight size={18} />
       </button>
 
       {/* Dots */}
-      <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 gap-2">
+      <div className="absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2 gap-2">
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => goTo(i)}
-            className={`h-3 w-3 rounded-full transition-all ${
-              i === current ? "w-8 bg-accent" : "bg-primary-foreground/50"
+            className={`h-2 rounded-full transition-all duration-300 ${
+              i === current ? "w-6 bg-accent" : "w-2 bg-white/50"
             }`}
             aria-label={`Go to slide ${i + 1}`}
           />
